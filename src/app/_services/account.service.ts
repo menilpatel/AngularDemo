@@ -49,12 +49,11 @@ export class AccountService {
         return this.http.get<any>(`${environment.apiUrl}/auth/getallusers`);
     }
 
-    // async getAllUsers() {
-    //     try {
-    //         return await this.http.get(`${environment.apiUrl}/auth/getallusers`);
-    //     }
-    //     catch (e) {
-    //         return undefined;
-    //     }
-    // }
+    getUserById(id: string) {
+        return this.http.get<any>(`${environment.apiUrl}/auth/getuserbyid?id=${id}`);
+    }
+
+    updateUserById(user: User) {
+        return this.http.post(`${environment.apiUrl}/auth/updateuserbyid`, user);
+    }
 }
