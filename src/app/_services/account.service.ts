@@ -42,7 +42,7 @@ export class AccountService {
     }
 
     register(user: User) {
-        return this.http.post(`${environment.apiUrl}/public/signin`, user);
+        return this.http.post(`${environment.apiUrl}/public/signup`, user);
     }
 
     getAllUsers() {

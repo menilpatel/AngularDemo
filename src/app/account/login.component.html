@@ -4,11 +4,13 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="email" formControlName="email" class="form-control" />
+                <input type="email" formControlName="email" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" formControlName="password" class="form-control" />
+                <input type="password" formControlName="password" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
             </div>
             <div>
                 <button [disabled]="loading" class="btn btn-primary">
