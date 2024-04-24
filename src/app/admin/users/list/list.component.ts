@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../../_services/account.service';
+import { AccountService } from '../../../_services/account.service';
 
 @Component({ templateUrl: 'list.component.html' })
 export class ListComponent implements OnInit {
