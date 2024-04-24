@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AccountService } from '../../_services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({ templateUrl: 'add-edit.component.html' })
 export class AddEditComponent implements OnInit {
@@ -17,7 +18,8 @@ export class AddEditComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private accountService: AccountService
+        private accountService: AccountService,
+        private toastr: ToastrService
     ) { }
 
     ngOnInit() {
@@ -67,6 +69,7 @@ export class AddEditComponent implements OnInit {
 
         this.saveUser().subscribe((response: any) => {
             if (response.statuscode == 200) {
+                this.toastr.success(this.id ? "User updated" : "User added");
                 this.router.navigateByUrl('/users');
             }
             this.submitting = false;

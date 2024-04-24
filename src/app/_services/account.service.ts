@@ -28,9 +28,11 @@ export class AccountService {
         return this.http.post<any>(`${environment.apiUrl}/public/signin`, { email, password })
             .pipe(map(response => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(response.data));
-                this.userSubject.next(response.data);
-                return response.data;
+                if (response.statuscode == 200) {
+                    localStorage.setItem('user', JSON.stringify(response.data));
+                    this.userSubject.next(response.data);
+                }
+                return response;
             }));
     }
 
