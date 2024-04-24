@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { LayoutComponent } from './layout.component';
+import { UsersComponent } from './users.component';
 import { ListComponent } from './list/list.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { AddEditComponent } from './add-edit/add-edit.component';
@@ -14,7 +14,7 @@ import { AddEditComponent } from './add-edit/add-edit.component';
         UsersRoutingModule
     ],
     declarations: [
-        LayoutComponent,
+        UsersComponent,
         ListComponent,
         AddEditComponent
     ]

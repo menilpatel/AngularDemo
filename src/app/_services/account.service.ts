@@ -58,4 +58,8 @@ export class AccountService {
     updateUserById(user: User) {
         return this.http.post(`${environment.apiUrl}/auth/updateuserbyid`, user);
     }
+
+    deleteUserById(id: string) {
+        return this.http.get<any>(`${environment.apiUrl}/auth/deleteuserbyid?id=${id}`);
+    }
 }

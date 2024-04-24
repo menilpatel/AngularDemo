@@ -18,4 +18,14 @@ export class ListComponent implements OnInit {
             }
         });
     }
+
+    deleteUser(id: string) {
+        const user = this.users!.find(x => x.id === id);
+        user.isDeleting = true;
+        this.accountService.deleteUserById(id).subscribe((response: any) => {
+            if (response.statuscode == 200) {
+                this.users = this.users!.filter(x => x.id !== id)
+            }
+        });
+    }
 }
