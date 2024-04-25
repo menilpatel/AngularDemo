@@ -45,15 +45,15 @@ export class LoginComponent implements OnInit {
                 if (response.statuscode == 200 && response.status == true) {
                     const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
                     const role = response.data.role;
-
+                    console.log(returnUrl);
                     if (returnUrl != null) {
-                        if (returnUrl.match(`/account/${role}/?`)) {
+                        if (returnUrl.match(`/${role}/?`)) {
                             this.router.navigateByUrl(returnUrl);
                         } else {
-                            this.router.navigateByUrl(`/account/${role}`);
+                            this.router.navigateByUrl(`/${role}`);
                         }
                     } else {
-                        this.router.navigateByUrl(`/account/${role}`);
+                        this.router.navigateByUrl(`/${role}`);
                     }
                 }
                 else {

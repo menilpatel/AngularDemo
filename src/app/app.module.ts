@@ -9,6 +9,8 @@ import { AuthorComponent } from './author/author.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { AlertComponent } from './_components/alert.component';
+import { UsersComponent } from './admin/users/users.component';
+import { BlogsComponent } from './author/blogs/blogs.component';
 
 @NgModule({
     imports: [
@@ -21,7 +23,9 @@ import { AlertComponent } from './_components/alert.component';
     declarations: [
         AppComponent,
         AlertComponent,
-        AuthorComponent
+        AuthorComponent,
+        UsersComponent,
+        BlogsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

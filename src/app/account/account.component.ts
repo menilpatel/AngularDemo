@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../_services/account.service';
 
-@Component({ templateUrl: 'layout.component.html' })
-export class LayoutComponent {
+@Component({ templateUrl: 'account.component.html' })
+export class AccountComponent {
     constructor(
         private router: Router,
         private accountService: AccountService

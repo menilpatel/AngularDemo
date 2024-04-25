@@ -10,35 +10,35 @@ const UsersModule = () => import('./admin/users/users.module').then(x => x.Users
 
 const routes: Routes = [
     {
-        path: 'account/author',
+        path: '',
+        component: AdminComponent,
+        canActivate: [AuthGuard],
+        data: { roles: 'admin' }
+    },
+    {
+        path: 'admin/users',
+        loadChildren: UsersModule,
+        canActivate: [AuthGuard],
+        data: { roles: 'admin' }
+    },
+    {
+        path: 'author',
         component: AuthorComponent,
         canActivate: [AuthGuard],
         data: { roles: 'author' }
 
     },
     {
-        path: 'account/author/blogs',
+        path: 'author/blogs',
         component: BlogsComponent,
         canActivate: [AuthGuard],
         data: { roles: 'author' }
     },
     {
-        path: 'account/admin',
-        component: AdminComponent,
-        canActivate: [AuthGuard],
-        data: { roles: 'admin' }
-    },
-    {
-        path: 'account/admin/users',
-        loadChildren: UsersModule,
-        canActivate: [AuthGuard],
-        data: { roles: 'admin' }
-    },
-    {
         path: 'account',
         loadChildren: accountModule
     },
-    { path: '**', redirectTo: 'account' }
+    { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({
