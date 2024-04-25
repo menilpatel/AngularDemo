@@ -5,7 +5,7 @@
             [routerLinkActiveOptions]="{exact: true}">Home</a>
         <a class="nav-item nav-link" routerLink="/admin/users" routerLinkActive="active"
             *ngIf="user.role=='admin'">Users</a>
-            <a class="nav-item nav-link" routerLink="/author/" routerLinkActive="active" *ngIf="user.role=='author'"
+        <a class="nav-item nav-link" routerLink="/author/" routerLinkActive="active" *ngIf="user.role=='author'"
             [routerLinkActiveOptions]="{exact: true}">Home</a>
         <a class="nav-item nav-link" routerLink="/author/blogs" routerLinkActive="active"
             *ngIf="user.role=='author'">Blogs</a>
@@ -15,6 +15,10 @@
 
 <!-- main app container -->
 <div class="app-container" [ngClass]="{ 'bg-light': user }">
-    <alert></alert>
-    <router-outlet></router-outlet>
+    <div class="p-4">
+        <div class="container">
+            <alert></alert>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>

@@ -16,6 +16,7 @@ export class UserService {
     }
 
     updateUserById(user: User) {
+        user.role="author";
         return this.http.post(`${environment.apiUrl}/auth/updateuserbyid`, user);
     }
 
