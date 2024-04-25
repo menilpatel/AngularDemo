@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-import { AccountService } from '../../../_services/account.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../_services/users.service';
 
@@ -71,7 +69,7 @@ export class AddEditComponent implements OnInit {
         this.saveUser().subscribe((response: any) => {
             if (response.statuscode == 200) {
                 this.toastr.success(this.id ? "User updated" : "User added");
-                this.router.navigateByUrl('/users');
+                this.router.navigateByUrl('admin/users');
             }
             this.submitting = false;
         });

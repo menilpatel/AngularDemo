@@ -24,7 +24,6 @@ import { BlogsComponent } from './author/blogs/blogs.component';
         AppComponent,
         AlertComponent,
         AuthorComponent,
-        UsersComponent,
         BlogsComponent
     ],
     providers: [
