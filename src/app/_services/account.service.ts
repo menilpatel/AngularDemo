@@ -46,20 +46,4 @@ export class AccountService {
     register(user: User) {
         return this.http.post(`${environment.apiUrl}/public/signup`, user);
     }
-
-    getAllUsers() {
-        return this.http.get<any>(`${environment.apiUrl}/auth/getallusers`);
-    }
-
-    getUserById(id: string) {
-        return this.http.get<any>(`${environment.apiUrl}/auth/getuserbyid?id=${id}`);
-    }
-
-    updateUserById(user: User) {
-        return this.http.post(`${environment.apiUrl}/auth/updateuserbyid`, user);
-    }
-
-    deleteUserById(id: string) {
-        return this.http.get<any>(`${environment.apiUrl}/auth/deleteuserbyid?id=${id}`);
-    }
 }

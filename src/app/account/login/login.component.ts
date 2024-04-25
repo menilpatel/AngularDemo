@@ -43,8 +43,18 @@ export class LoginComponent implements OnInit {
         this.accountService.login(this.f['email'].value, this.f['password'].value)
             .subscribe((response: any) => {
                 if (response.statuscode == 200 && response.status == true) {
-                    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-                    this.router.navigateByUrl(returnUrl);
+                    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+                    const role = response.data.role;
+
+                    if (returnUrl != null) {
+                        if (returnUrl.match(`/account/${role}/?`)) {
+                            this.router.navigateByUrl(returnUrl);
+                        } else {
+                            this.router.navigateByUrl(`/account/${role}`);
+                        }
+                    } else {
+                        this.router.navigateByUrl(`/account/${role}`);
+                    }
                 }
                 else {
                     this.alertService.error(response.message);

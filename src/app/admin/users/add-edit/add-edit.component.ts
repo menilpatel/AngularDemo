@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AccountService } from '../../../_services/account.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../../../_services/users.service';
 
 @Component({ templateUrl: 'add-edit.component.html' })
 export class AddEditComponent implements OnInit {
@@ -18,7 +19,7 @@ export class AddEditComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private accountService: AccountService,
+        private userService: UserService,
         private toastr: ToastrService
     ) { }
 
@@ -42,7 +43,7 @@ export class AddEditComponent implements OnInit {
             this.title = 'Edit User';
             this.loading = true;
 
-            this.accountService.getUserById(this.id).subscribe((response: any) => {
+            this.userService.getUserById(this.id).subscribe((response: any) => {
                 if (response.statuscode == 200) {
                     this.form.patchValue(response.data);
                     this.loading = false;
@@ -78,6 +79,6 @@ export class AddEditComponent implements OnInit {
 
     private saveUser() {
         // create or update user based on id param
-        return this.accountService.updateUserById(this.form.value);
+        return this.userService.updateUserById(this.form.value);
     }
 }

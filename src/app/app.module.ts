@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { AuthorComponent } from './author/author.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { AlertComponent } from './_components/alert.component';
@@ -21,7 +21,7 @@ import { AlertComponent } from './_components/alert.component';
     declarations: [
         AppComponent,
         AlertComponent,
-        HomeComponent
+        AuthorComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

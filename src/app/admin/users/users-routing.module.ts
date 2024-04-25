@@ -7,11 +7,11 @@ import { AddEditComponent } from './add-edit/add-edit.component';
 
 const routes: Routes = [
     {
-        path: '', component: UsersComponent,
+        path: 'account/users', component: UsersComponent,
         children: [
-            { path: '', component: ListComponent },
-            { path: 'add', component: AddEditComponent },
-            { path: 'edit/:id', component: AddEditComponent }
+            { path: 'account/users', component: ListComponent },
+            { path: 'account/users/add', component: AddEditComponent },
+            { path: 'account/users/edit/:id', component: AddEditComponent }
 
         ]
     }
