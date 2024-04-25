@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './_helpers/auth.guard';
 import { AuthorComponent } from './author/author.component';
 import { AdminComponent } from './admin/admin.component';
-import { BlogsComponent } from './author/blogs/blogs.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const UsersModule = () => import('./admin/users/users.module').then(x => x.UsersModule);
+const BlogsModule = () => import('./author/blogs/blogs.module').then(x => x.BlogsModule);
 
 const routes: Routes = [
     {
@@ -30,7 +30,7 @@ const routes: Routes = [
     },
     {
         path: 'author/blogs',
-        component: BlogsComponent,
+        loadChildren: BlogsModule,
         canActivate: [AuthGuard],
         data: { roles: 'author' }
     },

@@ -1,0 +1,27 @@
+<h1>Blogs</h1>
+<a routerLink="addblog" class="btn btn-sm btn-success mb-2">Add Blog</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Title</th>
+            <th style="width: 30%">Description</th>
+            <th style="width: 30%">Published</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let blog of listBlogs">
+            <td>{{blog.title}}</td>
+            <td>{{blog.description}}</td>
+            <td></td>
+            <td style="white-space: nowrap">
+                
+            </td>
+        </tr>
+        <tr *ngIf="!listBlogs">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
