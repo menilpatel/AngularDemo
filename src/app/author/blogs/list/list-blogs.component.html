@@ -3,6 +3,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th style="width: 30%">Image</th>
             <th style="width: 30%">Title</th>
             <th style="width: 30%">Description</th>
             <th style="width: 30%">Published</th>
@@ -11,15 +12,16 @@
     </thead>
     <tbody>
         <tr *ngFor="let blog of listBlogs">
+            <td><img [src]="imgUrl + blog.image" class="img-thumbnail" alt="{{blog.title}}" style="width: 100px;"></td>
             <td>{{blog.title}}</td>
             <td>{{blog.description}}</td>
             <td>{{blog.isPublished}}</td>
             <td style="white-space: nowrap">
                 <a routerLink="editblog/{{blog.id}}" class="btn btn-sm btn-primary me-1">Edit</a>
                 <button (click)="deleteBlog(blog.id)" class="btn btn-sm btn-danger btn-delete-user"
-                    [disabled]="blog.isDeleting">
-                    <span *ngIf="blog.isDeleting" class="spinner-border spinner-border-sm"></span>
-                    <span *ngIf="!blog.isDeleting">Delete</span>
+                    [disabled]="blog.isDeleted">
+                    <span *ngIf="blog.isDeleted" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!blog.isDeleted">Delete</span>
                 </button>
             </td>
         </tr>

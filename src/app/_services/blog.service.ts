@@ -18,14 +18,24 @@ export class BlogService {
         return this.http.get<any>(`${environment.apiUrl}/auth/getallblogs`);
     }
 
+    getBlogsByAuthor() {
+        return this.http.get<any>(`${environment.apiUrl}/auth/getblogsbyauthor`);
+    }
+
     getBlogById(id: string) {
         return this.http.get<any>(`${environment.apiUrl}/auth/getblogbyid?id=${id}`);
     }
 
-    addBlogDetails(blog: Blog) {
+    addBlogDetails(form: FormData) {
         this.user = this.accountService.userValue;
-        blog.publishedBy = this.user.id;
-        return this.http.post(`${environment.apiUrl}/auth/addblog`, blog);
+        form.append("publishedBy",this.user.id);
+        return this.http.post(`${environment.apiUrl}/auth/addblog`, form);
+    }
+
+    updateBlogDetails(form: FormData) {
+        this.user = this.accountService.userValue;
+        form.append("publishedBy",this.user.id);
+        return this.http.post(`${environment.apiUrl}/auth/updateblog`, form);
     }
 
     deleteBlogId(id: string) {

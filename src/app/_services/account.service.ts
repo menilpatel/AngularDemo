@@ -44,6 +44,7 @@ export class AccountService {
     }
 
     register(user: User) {
+        user.role = "author";
         return this.http.post(`${environment.apiUrl}/public/signup`, user);
     }
 }

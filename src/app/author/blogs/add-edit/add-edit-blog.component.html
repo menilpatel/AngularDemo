@@ -22,6 +22,18 @@
     </div>
     <div class="row">
         <div class="mb-3 col">
+            <label for="formFile" class="form-label">Blog Image</label>
+            <input class="form-control" type="file" formControlName="image" (change)="selectBlogImage($event)"
+                [ngClass]="{ 'is-invalid': submitted && f['image'].errors }">
+            <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+                <div *ngIf="f['image'].errors['required']">Blog Image is required</div>
+            </div>
+            <br>
+            <img *ngIf="id" [src]="imgUrl + blogDetails.image" class="img-thumbnail" alt="{{blogDetails.title}}" style="width: 100px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" formControlName="isPublished" checked>
                 <label class="form-check-label">Is Published</label>

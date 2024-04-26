@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../../_services/blog.service';
-import { Blog } from '../../../_models/blog';
+import { environment } from '../../../../enviroments/enviroment';
 
 @Component({ templateUrl: 'list-blogs.component.html' })
 export class ListBlogsComponent implements OnInit {
     listBlogs?: any[];
+    imgUrl: string = `${environment.apiUrl}`;
+
     constructor(private blogService: BlogService) { }
 
     ngOnInit() {
@@ -12,7 +14,7 @@ export class ListBlogsComponent implements OnInit {
     }
 
     getAllBlogs() {
-        this.blogService.getAllBlogs().subscribe((response: any) => {
+        this.blogService.getBlogsByAuthor().subscribe((response: any) => {
             if (response.statuscode == 200) {
                 this.listBlogs = response.data;
             }
