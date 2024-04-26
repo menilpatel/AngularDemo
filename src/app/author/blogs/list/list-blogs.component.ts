@@ -18,4 +18,14 @@ export class ListBlogsComponent implements OnInit {
             }
         });
     }
+
+    deleteBlog(id: string) {
+        const user = this.listBlogs!.find(x => x.id === id);
+        user.isDeleting = true;
+        this.blogService.deleteBlogId(id).subscribe((response: any) => {
+            if (response.statuscode == 200) {
+                this.listBlogs = this.listBlogs!.filter(x => x.id !== id)
+            }
+        });
+    }
 }

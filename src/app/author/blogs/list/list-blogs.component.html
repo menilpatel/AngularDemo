@@ -6,16 +6,21 @@
             <th style="width: 30%">Title</th>
             <th style="width: 30%">Description</th>
             <th style="width: 30%">Published</th>
-            <th style="width: 10%"></th>
+            <th style="width: 10%">Actions</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let blog of listBlogs">
             <td>{{blog.title}}</td>
             <td>{{blog.description}}</td>
-            <td></td>
+            <td>{{blog.isPublished}}</td>
             <td style="white-space: nowrap">
-                
+                <a routerLink="editblog/{{blog.id}}" class="btn btn-sm btn-primary me-1">Edit</a>
+                <button (click)="deleteBlog(blog.id)" class="btn btn-sm btn-danger btn-delete-user"
+                    [disabled]="blog.isDeleting">
+                    <span *ngIf="blog.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!blog.isDeleting">Delete</span>
+                </button>
             </td>
         </tr>
         <tr *ngIf="!listBlogs">
