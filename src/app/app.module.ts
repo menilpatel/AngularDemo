@@ -19,7 +19,7 @@ import { AlertComponent } from './_components/alert.component';
     ],
     declarations: [
         AppComponent,
-        AlertComponent
+        AlertComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -5,12 +5,18 @@ import { AuthorComponent } from './author/author.component';
 import { AdminComponent } from './admin/admin.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
+const PublicModule = () => import('./public/public.module').then(x => x.PublicModule);
 const UsersModule = () => import('./admin/users/users.module').then(x => x.UsersModule);
 const BlogsModule = () => import('./author/blogs/blogs.module').then(x => x.BlogsModule);
 
 const routes: Routes = [
     {
         path: '',
+        loadChildren: PublicModule,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'admin',
         component: AdminComponent,
         canActivate: [AuthGuard],
         data: { roles: 'admin' }
