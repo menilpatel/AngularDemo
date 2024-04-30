@@ -3,6 +3,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PublicComponent } from './public.component';
 import { PublicRoutingModule } from './public-routing.module';
+import { BlogsComponent } from './blogs/blogs.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
     imports: [
@@ -11,7 +13,9 @@ import { PublicRoutingModule } from './public-routing.module';
         PublicRoutingModule
     ],
     declarations: [
-        PublicComponent
+        PublicComponent,
+        HomeComponent,
+        BlogsComponent
     ]
 })
 export class PublicModule { }

@@ -12,8 +12,7 @@ const BlogsModule = () => import('./author/blogs/blogs.module').then(x => x.Blog
 const routes: Routes = [
     {
         path: '',
-        loadChildren: PublicModule,
-        canActivate: [AuthGuard]
+        loadChildren: PublicModule
     },
     {
         path: 'admin',

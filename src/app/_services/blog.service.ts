@@ -15,7 +15,7 @@ export class BlogService {
     ) { }
 
     getAllBlogs() {
-        return this.http.get<any>(`${environment.apiUrl}/auth/getallblogs`);
+        return this.http.get<any>(`${environment.apiUrl}/public/getallblogs`);
     }
 
     getBlogsByAuthor() {

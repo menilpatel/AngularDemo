@@ -1,0 +1,11 @@
+<h1>Blogs</h1>
+<div class="media" *ngFor="let blog of listBlogs">
+    <div class="media-left">
+        <img [src]="imgUrl + blog.image" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">Left-aligned</h4>
+        <h6>{{blog.title}}</h6>
+        <p>{{blog.description}}</p>
+    </div>
+</div>

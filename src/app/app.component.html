@@ -1,12 +1,19 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark px-3" *ngIf="user">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/admin/" routerLinkActive="active" *ngIf="user.role=='admin'"
-            [routerLinkActiveOptions]="{exact: true}">Home</a>
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3">
+    <div class="navbar-nav" *ngIf="!user">
+        <a class="navbar-brand" routerLink="/">Angular Demo</a>
+        <!-- Public Nav -->
+        <a class="nav-item nav-link" routerLink="/blogs" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Blogs</a>
+        <a class="nav-item nav-link" routerLink="/account/login" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Login</a>
+        <a class="nav-item nav-link" routerLink="/account/register" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Register</a>
+    </div>
+    <div class="navbar-nav" *ngIf="user">
+        <a class="navbar-brand" routerLink="{{user.role}}">{{user.firstName + " " +user.lastName}}</a>
         <a class="nav-item nav-link" routerLink="/admin/users" routerLinkActive="active"
             *ngIf="user.role=='admin'">Users</a>
-        <a class="nav-item nav-link" routerLink="/author/" routerLinkActive="active" *ngIf="user.role=='author'"
-            [routerLinkActiveOptions]="{exact: true}">Home</a>
         <a class="nav-item nav-link" routerLink="/author/blogs" routerLinkActive="active"
             *ngIf="user.role=='author'">Blogs</a>
         <button class="btn btn-link nav-item nav-link" (click)="logout()">Logout</button>
