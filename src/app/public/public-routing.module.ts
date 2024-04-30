@@ -7,7 +7,7 @@ import { PublicComponent } from './public.component';
 
 const routes: Routes = [
     {
-        path: '', component: PublicComponent,
+        path: '', component: BlogsComponent,
         children: [
             { path: 'blogs', component: BlogsComponent },
         ]
