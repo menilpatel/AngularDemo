@@ -1,11 +1,11 @@
 <h1>Blogs</h1>
-<div class="media" *ngFor="let blog of listBlogs">
-    <div class="media-left">
-        <img [src]="imgUrl + blog.image" class="media-object" style="width:60px">
+<div class="d-flex" *ngFor="let blog of listBlogs">
+    <div class="flex-shrink-0">
+        <img [src]="imgUrl + blog.image" class="media-object" style="width:100px">
     </div>
-    <div class="media-body">
-        <h4 class="media-heading">Left-aligned</h4>
+    <div class="flex-grow-1 ms-3">
         <h6>{{blog.title}}</h6>
         <p>{{blog.description}}</p>
+        <p><i>Poasted on {{blog.createtimestamp * 1000 | date:'MMM dd, yyyy h:mm:ss a'}}</i></p>
     </div>
 </div>

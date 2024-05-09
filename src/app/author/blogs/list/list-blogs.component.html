@@ -7,6 +7,7 @@
             <th style="width: 30%">Title</th>
             <th style="width: 30%">Description</th>
             <th style="width: 30%">Published</th>
+            <th style="width: 30%">Date</th>
             <th style="width: 10%">Actions</th>
         </tr>
     </thead>
@@ -16,6 +17,7 @@
             <td>{{blog.title}}</td>
             <td>{{blog.description}}</td>
             <td>{{blog.isPublished}}</td>
+            <td>{{blog.createtimestamp * 1000 | date:'MMM dd, yyyy h:mm:ss a'}}</td>
             <td style="white-space: nowrap">
                 <a routerLink="editblog/{{blog.id}}" class="btn btn-sm btn-primary me-1">Edit</a>
                 <button (click)="deleteBlog(blog.id)" class="btn btn-sm btn-danger btn-delete-user"
