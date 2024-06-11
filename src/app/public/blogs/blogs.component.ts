@@ -14,7 +14,7 @@ export class BlogsComponent {
     }
 
     getAllBlogs() {
-        this.blogService.getAllBlogs(1,25,"","","DESC").subscribe((response: any) => {
+        this.blogService.getAllBlogs().subscribe((response: any) => {
             if (response.statuscode == 200) {
                 this.listBlogs = response.data;
             }
