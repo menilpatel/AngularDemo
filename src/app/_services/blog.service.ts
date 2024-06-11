@@ -11,11 +11,17 @@ export class BlogService {
     user: any;
     constructor(
         private http: HttpClient,
-        private accountService:AccountService
+        private accountService: AccountService
     ) { }
 
-    getAllBlogs() {
-        return this.http.get<any>(`${environment.apiUrl}/public/getallblogs`);
+    getAllBlogs(pageindex: number = 0, pagesize: number = 25, searchdata: string = "", sortparam: string = "", sortorder: string = "DESC") {
+        let form = new FormData();
+        form.append("pageindex", pageindex.toString());
+        form.append("pagesize", pagesize.toString());
+        form.append("searchdata", searchdata);
+        form.append("sortparam", sortparam);
+        form.append("sortorder", sortorder);
+        return this.http.post(`${environment.apiUrl}/public/getallblogs`, form);
     }
 
     getBlogsByAuthor() {
@@ -28,13 +34,13 @@ export class BlogService {
 
     addBlogDetails(form: FormData) {
         this.user = this.accountService.userValue;
-        form.append("publishedBy",this.user.id);
+        form.append("publishedBy", this.user.id);
         return this.http.post(`${environment.apiUrl}/auth/addblog`, form);
     }
 
     updateBlogDetails(form: FormData) {
         this.user = this.accountService.userValue;
-        form.append("publishedBy",this.user.id);
+        form.append("publishedBy", this.user.id);
         return this.http.post(`${environment.apiUrl}/auth/updateblog`, form);
     }
 
